@@ -15,12 +15,11 @@ public class Loader {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.HOUR, +2);
         Date plus2hours = calendar.getTime();
-        Date nowTime = new Date();
 
         flights.stream()
                 .filter(d -> d.getType().compareTo(Flight.Type.DEPARTURE) > -1)
                 .map(Flight::getDate)
-                .filter(s -> s.before(plus2hours) && s.after(nowTime))
+                .filter(s -> s.before(plus2hours) && s.after(new Date()))
                 .forEach(System.out::println);
     }
 }
